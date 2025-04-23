@@ -27,6 +27,10 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/tech_task/css/tech_task.css"
 # app_include_js = "/assets/tech_task/js/tech_task.js"
+app_include_js = "/assets/tech_task/js/maintenance_dashboar.js"
+app_include_js = [
+    "https://cdn.jsdelivr.net/npm/chart.js"
+]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/tech_task/css/tech_task.css"
@@ -136,6 +140,12 @@ app_license = "mit"
 # Document Events
 # ---------------
 # Hook on document methods and events
+
+doc_events = {
+    "Task": {
+        "on_update": "tech_task.technincal_task_assignment.doctype.asset_maintenance_request.asset_maintenance_request.on_task_update"
+    }
+}
 
 # doc_events = {
 # 	"*": {
