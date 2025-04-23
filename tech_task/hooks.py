@@ -23,7 +23,9 @@ app_license = "mit"
 
 # Includes in <head>
 # ------------------
-
+app_patches = [
+    "tech_task.patches.maintenance_workflow"
+]
 # include js, css files in header of desk.html
 # app_include_css = "/assets/tech_task/css/tech_task.css"
 # app_include_js = "/assets/tech_task/js/tech_task.js"
