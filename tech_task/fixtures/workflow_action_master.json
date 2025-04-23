@@ -1,0 +1,51 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-01-30 13:14:20.844615",
+  "name": "Approve",
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-01-30 13:14:20.847992",
+  "name": "Reject",
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-01-30 13:14:20.851165",
+  "name": "Review",
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-04-08 23:33:32.017213",
+  "name": "Submit",
+  "workflow_action_name": "Submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-04-22 16:36:29.700231",
+  "name": "Submit for Review",
+  "workflow_action_name": "Submit for Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-04-22 16:36:39.818232",
+  "name": "Complete",
+  "workflow_action_name": "Complete"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2025-04-22 22:11:20.223130",
+  "name": "Reopen",
+  "workflow_action_name": "Reopen"
+ }
+]
