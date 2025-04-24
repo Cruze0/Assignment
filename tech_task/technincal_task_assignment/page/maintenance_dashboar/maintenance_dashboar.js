@@ -34,7 +34,7 @@ frappe.pages['maintenance-dashboar'].on_page_load = function(wrapper) {
 							<h4 class="card-title">Maintenance Requests by Status</h4>
 							<div style="max-width: 300px; margin: auto;">
 	<canvas id="status-chart"></canvas>
-</div>
+</div>git branch -M main
 						</div>
 					</div>
 				</div>

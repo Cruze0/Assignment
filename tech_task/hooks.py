@@ -258,3 +258,12 @@ fixtures = [
     "Workflow State",
     "Workflow Action Master"
 ]
+
+fixtures = [
+    {
+        "doctype": "Role",
+        "filters": [
+            ["name", "in", ["Maintenance Team", "Maintenance Team Supervisor"]]
+        ]
+    }
+]
