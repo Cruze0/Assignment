@@ -29,7 +29,14 @@ frappe.ui.form.on('Asset Maintenance Request', {
                     },
                     callback: function (r) {
                         if (r.message) {
-                            frappe.msgprint(__("Task Created: <a href='/app/task/" + r.message + "'>" + r.message + "</a>"), __("Success"));
+                            frappe.msgprint(
+                                __("Task Created: <a href='/app/task/" + r.message + "'>" + r.message + "</a>"),
+                                __("Success")
+                            );
+                            // Refresh the page after 3 seconds
+                            setTimeout(() => {
+                                location.reload();
+                            }, 3000);
                         }
                     }
                 });
@@ -37,5 +44,6 @@ frappe.ui.form.on('Asset Maintenance Request', {
         }
     }
 });
+
 
 
