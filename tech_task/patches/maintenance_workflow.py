@@ -12,7 +12,7 @@ def execute():
     # ------------------------------------------------------------------
     # 1️⃣  Make sure the required roles exist
     # ------------------------------------------------------------------
-    for role in ("Maintenance User", "Maintenance Team Supervisor"):
+    for role in ("Maintenance Team", "Maintenance Team Supervisor"):
         if not frappe.db.exists("Role", role):
             frappe.get_doc(
                 {"doctype": "Role", "role_name": role}
@@ -36,7 +36,7 @@ def execute():
                     "state": "Open",
                     "doc_status": 0,
                     "update_field": "status",
-                    "allow_edit": "Maintenance User",
+                    "allow_edit": "Maintenance Team",
                 },
                 {
                     "state": "In Review",
@@ -57,7 +57,7 @@ def execute():
                     "action": "Submit for Review",
                     "state": "Open",
                     "next_state": "In Review",
-                    "allowed": "Maintenance User",
+                    "allowed": "Maintenance Team",
                 },
                 {
                     "action": "Complete",
