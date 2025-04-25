@@ -61,6 +61,7 @@ To ensure that the `Asset` link field only shows assets with the status `"In Use
 5. run this command for role allocation to Administrator: import tech_task.patches.assign_roles_to_admin as patch
 6. and then patch.execute()
 
+### NOTE: Task 5 i have done through Page
 
 ## Task 5: Reporting and Dashboard
 1. Maintenance Dashboard:
@@ -81,3 +82,23 @@ To ensure that the `Asset` link field only shows assets with the status `"In Use
 
 
 ### for Task 6 i have a attched a document of Quality Inspection Template doctype here you can see the header is not overlapping with child table
+i have used this css
+.header-space1, .footer-space1 {
+    height: 195px;
+    width: 97%;
+  }
+.fixed-table-header {
+      position: fixed;
+      top: 180px;
+      width: 100%;
+      z-index: 100;
+     
+      display: table-header-group;
+    }
+
+    .fixed-table-header:not(:first-of-type) {
+      page-break-before: always;
+      
+    }
+
+

@@ -10,50 +10,51 @@ from frappe.utils import get_datetime, time_diff_in_hours
 from frappe.utils import get_url
 
 class AssetMaintenanceRequest(Document):
-    def after_save(self):
-        print(">>> After save hit")
-        frappe.msgprint("After save function triggered.")
-        if self.priority == "Urgent":
-            self.send_urgent_email()
+    pass
+    # def after_save(self):
+    #     print(">>> After save hit")
+    #     frappe.msgprint("After save function triggered.")
+    #     if self.priority == "Urgent":
+    #         self.send_urgent_email()
 
-    def send_urgent_email(self):
-        supervisors = frappe.get_all(
-            "Has Role",
-            filters={"role": "Maintenance Team Supervisor"},
-            fields=["parent"]
-        )
+    # def send_urgent_email(self):
+    #     supervisors = frappe.get_all(
+    #         "Has Role",
+    #         filters={"role": "Maintenance Team Supervisor"},
+    #         fields=["parent"]
+    #     )
 
-        recipient_emails = [
-            frappe.db.get_value("User", user.parent, "email")
-            for user in supervisors
-            if frappe.db.get_value("User", user.parent, "enabled")
-        ]
-        recipient_emails = list(filter(None, recipient_emails))
+    #     recipient_emails = [
+    #         frappe.db.get_value("User", user.parent, "email")
+    #         for user in supervisors
+    #         if frappe.db.get_value("User", user.parent, "enabled")
+    #     ]
+    #     recipient_emails = list(filter(None, recipient_emails))
 
-        if recipient_emails:
-            sender_email = "ankit.m0720@gmail.com"
-            subject = f"[Urgent] Maintenance Request: {self.asset_name or self.asset}"
-            link = f"{get_url()}/app/asset-maintenance-request/{self.name}"
-            message = f"""
-                <p><strong>An <span style="color:red;">urgent</span> maintenance request has been submitted.</strong></p>
-                <p><b>Asset:</b> {self.asset or ''} - {self.asset_name or ''}</p>
-                <p><b>Requested By:</b> {self.requested_by or ''} - {self.employee_name or ''}</p>
-                <p><b>Expected Completion Date:</b> {self.expected_completion_date or 'Not Set'}</p>
-                <p><b>Priority:</b> {self.priority}</p>
-                <p><a href="{link}">Click here to view the Maintenance Request</a></p>
-                <br/>
-                <p>Regards,<br>{frappe.utils.get_fullname(frappe.session.user)}</p>
-            """
+    #     if recipient_emails:
+    #         sender_email = "ankit.m0720@gmail.com"
+    #         subject = f"[Urgent] Maintenance Request: {self.asset_name or self.asset}"
+    #         link = f"{get_url()}/app/asset-maintenance-request/{self.name}"
+    #         message = f"""
+    #             <p><strong>An <span style="color:red;">urgent</span> maintenance request has been submitted.</strong></p>
+    #             <p><b>Asset:</b> {self.asset or ''} - {self.asset_name or ''}</p>
+    #             <p><b>Requested By:</b> {self.requested_by or ''} - {self.employee_name or ''}</p>
+    #             <p><b>Expected Completion Date:</b> {self.expected_completion_date or 'Not Set'}</p>
+    #             <p><b>Priority:</b> {self.priority}</p>
+    #             <p><a href="{link}">Click here to view the Maintenance Request</a></p>
+    #             <br/>
+    #             <p>Regards,<br>{frappe.utils.get_fullname(frappe.session.user)}</p>
+    #         """
 
-            frappe.sendmail(
-                recipients=recipient_emails,
-                sender=sender_email,
-                subject=subject,
-                message=message,
-                reference_doctype=self.doctype,
-                reference_name=self.name
-            )
-            frappe.msgprint("Urgent email sent to Maintenance Team Supervisors.")
+    #         frappe.sendmail(
+    #             recipients=recipient_emails,
+    #             sender=sender_email,
+    #             subject=subject,
+    #             message=message,
+    #             reference_doctype=self.doctype,
+    #             reference_name=self.name
+    #         )
+    #         frappe.msgprint("Urgent email sent to Maintenance Team Supervisors.")
 
 
 
