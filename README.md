@@ -83,6 +83,7 @@ To ensure that the `Asset` link field only shows assets with the status `"In Use
 
 ### for Task 6 i have a attched a document of Quality Inspection Template doctype here you can see the header is not overlapping with child table
 i have used this css
+
 .header-space1, .footer-space1 {
     height: 195px;
     width: 97%;
@@ -92,13 +93,10 @@ i have used this css
       top: 180px;
       width: 100%;
       z-index: 100;
-     
       display: table-header-group;
     }
-
     .fixed-table-header:not(:first-of-type) {
       page-break-before: always;
-      
     }
 
 
