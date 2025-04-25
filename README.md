@@ -1,12 +1,62 @@
-<<<<<<< HEAD
-# Assignment
-Tech task for asset mantainance request
-=======
-## Technincal Task Assignment
+# Tech Task: Asset Maintenance Request
 
-Technincal Task Assignment
+This is a custom Frappe app for managing Asset Maintenance Requests.
 
-#### License
+---
 
-mit
->>>>>>> 3f8fd68 (feat: Initialize App)
+## Task 1: Custom Doctype – Asset Maintenance Request
+
+Create a new Doctype named **"Asset Maintenance Request"** to manage maintenance requests for company assets.
+
+### 🔧 Fields to Include:
+
+| Field Label                | Field Type  | Notes                                                                 |
+|---------------------------|-------------|-----------------------------------------------------------------------|
+| Request Date              | Date        | Default to current date                                              |
+| Asset                     | Link        | Link to the **Asset** Doctype                                        |
+| Asset Name                | Data        | Auto-fetch from selected Asset                                       |
+| Maintenance Type          | Select      | Options: Preventive, Corrective, Emergency                           |
+| Requested By              | Link        | Link to the **Employee** Doctype                                     |
+| Employee Name             | Data        | Auto-fetch from selected "Requested By"                              |
+| Department                | Link        | Auto-fetch from selected Employee                                    |
+| Priority                  | Select      | Options: Low, Medium, High, Urgent                                   |
+| Expected Completion Date  | Date        |                                                                       |
+| Resolution Time (Hours)   | Float       |                                                                       |
+| Status                    | Select      | Options: Open, In Progress, In Review, Completed                     |
+
+Make sure to configure the auto-fetching using "Fetch From" property or through client scripting if needed.
+
+---
+
+## Task 2: Customization and Logic
+
+### ✅ 1. Filter Asset Field to Only Show "In Use" Assets
+To ensure that the `Asset` link field only shows assets with the status `"In Use"`, follow these steps:
+
+#### ➤ Add "In Use" as an option in the **status** field of the **Asset** Doctype:
+1. Go to **Asset** Doctype (`/app/doctype/asset`).
+2. Find the **status** field.
+3. Add `"In Use"` to the list of options if it's not already there.
+
+
+## Task 3: Button and Navigation
+### Create Maintenance Task Button:
+1. Add a button labeled "Create Maintenance Task" visible only after the document is saved and will be visible to the Maintenance Team Supervisor(role-based).
+2. When clicked, the button should create a new Task in the "Project" module, linking it to the selected asset.(create custom fields in Task as required) and the Maintenance Team Supervisor(role-based) will assign the task to Maintenance Team member (using assign to) and Update Status to in-Progress in Asset Maintenance Request.
+3. The created Task should inherit these details from the Asset Maintenance Request:
+   Subject Should be (Asset Name-Maintenance Type-series)
+   Expected Completion Date
+   Priority
+4. When the Task is Set to Completed by a Maintenance Team member,calculate the time difference between Request Date and Expected Completion Date and update the  Resolution Time field in Asset maintenance Request and update Status of Asset Maintenance Request to "In Review"
+
+
+## Task 4: Custom Workflow
+### Maintenance Request Approval Workflow:
+1. Create a workflow such that when the Status  can be set to "Completed" only by the Maintenance Team Supervisor.
+### NOTE: for creating and executing workflow just follow this steps
+1. Open Python console: bench --site site-name console
+2. run this command for workflow: import tech_task.patches.maintenance_workflow as patch
+3. and then patch.execute()
+4. and for "Maintenance Team" and "Maintenance Team Supervisor" role (automatic Role Allocatio to Administrator)
+5. run this command for role allocation to Administrator: import tech_task.patches.assign_roles_to_admin as patch
+6. and then patch.execute()

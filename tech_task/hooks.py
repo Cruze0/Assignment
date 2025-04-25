@@ -267,3 +267,13 @@ fixtures = [
         ]
     }
 ]
+
+fixtures = [
+    {
+        "dt": "Server Script",
+        "filters": [
+            ["name", "in", ["Email"]]
+        ]
+    }
+]
+
