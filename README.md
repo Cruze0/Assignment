@@ -60,3 +60,24 @@ To ensure that the `Asset` link field only shows assets with the status `"In Use
 4. and for "Maintenance Team" and "Maintenance Team Supervisor" role (automatic Role Allocatio to Administrator)
 5. run this command for role allocation to Administrator: import tech_task.patches.assign_roles_to_admin as patch
 6. and then patch.execute()
+
+
+## Task 5: Reporting and Dashboard
+1. Maintenance Dashboard:
+2. Create a dashboard widget that shows:
+3. Total number of open requests.
+4. Total number of critical priority requests.
+5. Pie chart of maintenance requests based on status
+
+
+## Task 6: Print Format Issue Resolution
+1.  Investigate why the item description in a child table overlaps with the table heading on the next page when it exceeds one page. (You can use the print format of any Doctype that has an Items table).  
+2. Modify the standard print format to ensure that long descriptions are handled correctly. Specifically, ensure:  
+   - The item description wraps across multiple lines.  
+   - There is no overlap with the table heading on the next page.  
+   - The print format remains clear and professional, even when the description spans multiple pages.  
+3. Provide a detailed explanation of how you solved the issue, including any code or changes made to the print format. 
+
+
+
+### for Task 6 i have a attched a document of Quality Inspection Template doctype here you can see the header is not overlapping with child table
